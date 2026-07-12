@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision · EchoWatch</title>
+<meta name="description" content="The roadmap from competition prototype to production-scale deployment.">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>EchoWatch</a>
+    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <div class="navlinks"><a href="index.html">Home</a><a href="problem.html">Problem</a><a href="technology.html">Technology</a><a href="dashboard.html">Dashboard</a><a href="vision.html" class="active">Vision</a><span class="sep"></span><a href="team.html">Team</a><a href="contact.html">Contact</a></div>
+  </div>
+</nav>
+<main>
+
+<section class="hero" style="padding-bottom:10px;">
+  <div class="wrap">
+    <div class="eyebrow">Where this goes</div>
+    <h1>Built for a competition.<br>Designed for a plant.</h1>
+    <p class="lede">Every part of this build maps to a real production equivalent. Being explicit about the gap is what makes the roadmap credible.</p>
+  </div>
+</section>
+
+<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#4FB8AC" data-amp="0.4" ></canvas></div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Roadmap</div>
+    <h2>Tier 1 (this build) versus Tier 2 (production vision).</h2>
+    <table class="cmp" style="margin-top:28px;">
+      <tr><th>Component</th><th>Tier 1 &mdash; this competition build</th><th>Tier 2 &mdash; production vision</th></tr>
+      <tr><td>Vibration sensing</td><td>MEMS accelerometer (ADXL345 / MPU6050)</td><td>IEPE accelerometer + 24-bit DAQ front-end</td></tr>
+      <tr><td>Motor diagnostics</td><td>Small clamp CT, bench-motor demo</td><td>CT / Rogowski coil inside the MCC, full MCSA suite</td></tr>
+      <tr><td>Kiln shell</td><td>Single IR spot reading per rotation</td><td>Multi-angle thermal camera, unwrapped 3D map</td></tr>
+      <tr><td>Telemetry</td><td>Wi-Fi / MQTT</td><td>RS-485 / Modbus RTU backbone</td></tr>
+      <tr><td>Anomaly model</td><td>1D convolutional autoencoder</td><td>Multi-scale convolutional LSTM autoencoder</td></tr>
+      <tr><td>Forecasting</td><td>Not attempted &mdash; no failure data available</td><td>Temporal Fusion Transformer / PINN / Wiener-process RUL</td></tr>
+      <tr><td>Dashboard backend</td><td>Local demo database, simulated feed</td><td>Hosted multi-plant time-series database, live IIoT feed</td></tr>
+      <tr><td>Coal mill safety</td><td>Not addressed by this build</td><td>Certified plant safety system, regardless of tier</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Business case</div>
+    <h2>One plant is the proof. Every plant is the point.</h2>
+    <div class="grid grid-3" style="margin-top:32px;">
+      <div class="card"><h3>Scale</h3><p>The same node design covers any plant with the same six equipment categories &mdash; the model changes per equipment type, not per site.</p></div>
+      <div class="card"><h3>Cost of inaction</h3><p>A single day of unplanned kiln downtime already costs more than this entire sensing rollout across a plant.</p></div>
+      <div class="card"><h3>Data compounds</h3><p>Every hour of real plant data collected sharpens the model further &mdash; the earliest deployments make every later one better.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fbrand">EchoWatch &middot; DCP University Engineering Challenge, Track 2</div>
+    <ul class="flinks">
+      <li><a href="contact.html">GitHub</a></li>
+      <li><a href="contact.html">One-pager (PDF)</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

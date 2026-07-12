@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · EchoWatch</title>
+<meta name="description" content="EchoWatch — acoustic predictive maintenance for cement plant equipment.">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>EchoWatch</a>
+    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <div class="navlinks"><a href="index.html" class="active">Home</a><a href="problem.html">Problem</a><a href="technology.html">Technology</a><a href="dashboard.html">Dashboard</a><a href="vision.html">Vision</a><span class="sep"></span><a href="team.html">Team</a><a href="contact.html">Contact</a></div>
+  </div>
+</nav>
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Live &middot; Predictive maintenance for Dangote Cement</div>
+    <h1>Listening for failure<br>before it happens.</h1>
+    <p class="lede">EchoWatch listens to crushers, mills, and kilns continuously, and flags wear days before it becomes downtime &mdash; sensed on-device, logged over time, and routed straight to the person who can act on it.</p>
+    <div class="btnrow">
+      <a class="btn btn-primary" href="problem.html">See the problem</a>
+      <a class="btn btn-ghost" href="technology.html">How it works</a>
+      <a class="btn btn-ghost" href="dashboard.html">View live dashboard</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:56px;">
+    <canvas class="waveform-hero" data-wave data-color="#E8672E" data-amp="0.45" data-mode="live" data-spike="240"></canvas>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="stat-strip">
+      <div class="stat"><div class="num">6</div><div class="label">Equipment types monitored per plant</div></div>
+      <div class="stat"><div class="num">$250K&ndash;$1.5M</div><div class="label">Cost of a single day of kiln downtime</div></div>
+      <div class="stat"><div class="num">~35KB</div><div class="label">On-device model size, INT8 quantized</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#4FB8AC" data-amp="0.4" ></canvas></div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What it does</div>
+    <h2>Sense, detect, notify &mdash; one ESP32 node per machine.</h2>
+    <div class="grid grid-3" style="margin-top:36px;">
+      <div class="card"><h3>Sense</h3><p>An acoustic and vibration sensor on each machine listens continuously, on-device, without needing a constant connection to the cloud.</p></div>
+      <div class="card"><h3>Detect</h3><p>A lightweight autoencoder flags deviations from that specific machine's own normal &mdash; not a generic average across every machine on site.</p></div>
+      <div class="card"><h3>Notify</h3><p>A confirmed anomaly is logged, shown live on the dashboard, and routed to whoever is responsible for that machine.</p></div>
+    </div>
+    <div class="btnrow"><a class="btn btn-ghost" href="technology.html">Read the full pipeline &rarr;</a></div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fbrand">EchoWatch &middot; DCP University Engineering Challenge, Track 2</div>
+    <ul class="flinks">
+      <li><a href="contact.html">GitHub</a></li>
+      <li><a href="contact.html">One-pager (PDF)</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technology · EchoWatch</title>
+<meta name="description" content="How EchoWatch senses, detects, and routes predictive maintenance alerts.">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>EchoWatch</a>
+    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <div class="navlinks"><a href="index.html">Home</a><a href="problem.html">Problem</a><a href="technology.html" class="active">Technology</a><a href="dashboard.html">Dashboard</a><a href="vision.html">Vision</a><span class="sep"></span><a href="team.html">Team</a><a href="contact.html">Contact</a></div>
+  </div>
+</nav>
+<main>
+
+<section class="hero" style="padding-bottom:10px;">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h1>From vibration to a routed alert.</h1>
+    <p class="lede">Four stages, running on a single ESP32 node per machine &mdash; from the moment a bearing starts to sound different to the moment the right person is told.</p>
+  </div>
+</section>
+
+<section style="padding-top:10px;">
+  <div class="wrap">
+    <div class="steps">
+      <div class="step"><div class="idx mono">01</div><div><h4>Sense</h4><p>A MEMS microphone and accelerometer on the machine housing capture acoustic and vibration signal continuously, processed on-device.</p></div></div>
+      <div class="step"><div class="idx mono">02</div><div><h4>Detect</h4><p>A 1D convolutional autoencoder &mdash; trained only on that machine's healthy operation &mdash; flags rising reconstruction error as a deviation from normal.</p></div></div>
+      <div class="step"><div class="idx mono">03</div><div><h4>Alert</h4><p>Every reading and every anomaly score is logged to a time-series database, powering the live dashboard and a historical trend per machine.</p></div></div>
+      <div class="step"><div class="idx mono">04</div><div><h4>Notify &amp; escalate</h4><p>A confirmed anomaly is routed to whoever is responsible for that specific machine. If the network is down and the alert can't be delivered, a local buzzer at the equipment fires instead &mdash; the alert never depends entirely on connectivity.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#4FB8AC" data-amp="0.4" ></canvas></div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Per-equipment sensing</div>
+    <h2>Six machines, six different failure signatures.</h2>
+    <div class="grid grid-3" style="margin-top:32px;">
+      <div class="card"><h3>Crushers</h3><p>Acoustic signature plus bearing vibration. A clean impact rhythm turns into a muffled drone as liners wear or a jam develops.</p></div><div class="card"><h3>Raw Mills</h3><p>Vibration and acoustic reading correlated against differential pressure, since an unstable grinding bed is the largest source of false alarms here.</p></div><div class="card"><h3>Coal Mills</h3><p>Vibration and motor current on the mill body. Gas safety monitoring stays on the plant's own certified system &mdash; never a demo sensor.</p></div><div class="card"><h3>Kilns</h3><p>A single infrared spot reading tracks shell temperature at one point per rotation, standing in for a full thermal-scanner array.</p></div><div class="card"><h3>Cement Mills</h3><p>The same acoustic principle used commercially for decades: grinding-media impact sound, mounted on the shell to stay clean of noise from neighboring machines.</p></div><div class="card"><h3>Packing</h3><p>Load-cell weight stability and motor current on the conveyors and rotary drives &mdash; the lightest-duty equipment on the line.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Scope</div>
+    <h2>Built now, versus designed for later.</h2>
+    <p class="lede">Not every sensor on the roadmap ships in this build.</p>
+    <table class="cmp">
+      <tr><th>Component</th><th>This build</th><th>Production vision</th></tr>
+      <tr><td>Vibration</td><td>MEMS accelerometer</td><td>IEPE + 24-bit DAQ</td></tr>
+      <tr><td>Motor diagnostics</td><td>Clamp CT, bench demo</td><td>CT / Rogowski in the MCC</td></tr>
+      <tr><td>Telemetry</td><td>Wi-Fi / MQTT</td><td>RS-485 / Modbus RTU</td></tr>
+    </table>
+    <div class="btnrow"><a class="btn btn-ghost" href="vision.html">See the full roadmap &rarr;</a></div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fbrand">EchoWatch &middot; DCP University Engineering Challenge, Track 2</div>
+    <ul class="flinks">
+      <li><a href="contact.html">GitHub</a></li>
+      <li><a href="contact.html">One-pager (PDF)</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>
