@@ -1,0 +1,210 @@
+LIVE DATA GUIDE – ADDITIONAL FAQ
+
+Q: What is live data?
+A: Live data refers to real-time measurements received from the IoT devices monitoring the machines.
+
+Q: How often is live data updated?
+A: The dashboard updates whenever new sensor data is transmitted and processed.
+
+Q: What information is shown in live monitoring?
+A: The system displays:
+
+* Timestamp
+* Horizontal acceleration
+* Vertical acceleration
+* RMS
+* Kurtosis
+* Anomaly score
+* Energy deviation
+* Asset Health Index (AHI)
+* Machine status
+
+Q: What does the timestamp represent?
+A: The timestamp indicates when the sensor measurement was collected.
+
+Q: Why are timestamps important?
+A: They help users determine exactly when changes in machine behavior occurred.
+
+Q: Why is live monitoring important?
+A: Live monitoring enables early detection of abnormal machine conditions and supports timely maintenance decisions.
+
+Q: What is horizontal acceleration?
+A: Horizontal acceleration measures machine vibrations along the horizontal axis.
+
+Q: What is vertical acceleration?
+A: Vertical acceleration measures machine vibrations along the vertical axis.
+
+Q: Why are two vibration directions monitored?
+A: Different mechanical faults may appear more strongly in different directions.
+
+Q: Why are acceleration values sometimes negative?
+A: Acceleration is directional, so negative values simply indicate vibration in the opposite direction.
+
+Q: What are the units of acceleration?
+A: Acceleration is typically measured in g (gravitational acceleration).
+
+Q: What does RMS mean in live monitoring?
+A: RMS represents the overall vibration energy of the machine.
+
+Q: Why does RMS change over time?
+A: RMS changes as machine operating conditions, loads, and fault severity change.
+
+Q: What is considered a high RMS value?
+A: High RMS values depend on the machine type, but sudden increases often indicate abnormal conditions.
+
+Q: What is kurtosis in live monitoring?
+A: Kurtosis measures impulsive vibration events and can indicate bearing defects or repeated impacts.
+
+Q: Why is kurtosis useful?
+A: It helps identify faults that may not significantly affect overall vibration levels.
+
+Q: What does a high kurtosis value mean?
+A: High kurtosis often indicates localized defects, impacts, or bearing damage.
+
+Q: What is the anomaly score?
+A: The anomaly score measures how different current machine behavior is from normal operating conditions.
+
+Q: Why is the anomaly score important?
+A: It helps detect faults that may not be obvious from traditional vibration metrics.
+
+Q: What does a high anomaly score mean?
+A: A high anomaly score indicates that the machine is behaving abnormally.
+
+Q: What is energy deviation?
+A: Energy deviation measures changes in vibration energy under different loading conditions.
+
+Q: Why is energy deviation monitored?
+A: It helps account for changes caused by varying machine loads.
+
+Q: What is AHI?
+A: AHI (Asset Health Index) is a numerical estimate of machine health ranging from 0 to 1.
+
+Q: Why is AHI important in live monitoring?
+A: It provides an easy-to-understand summary of machine health.
+
+Q: What does the machine status indicate?
+A: The status indicates the current health category of the machine.
+
+Q: What are the machine status categories?
+
+Healthy:
+AHI = 0.80–1.00
+
+Warning:
+AHI = 0.68–0.80
+
+Degraded:
+AHI = 0.20–0.68
+
+Critical:
+AHI ≤ 0.20
+
+Q: Why is my machine status changing frequently?
+A: Changes in load, vibration conditions, or developing faults can cause status changes.
+
+Q: Why are graphs important?
+A: Graphs help users identify trends and detect gradual deterioration.
+
+Q: What live graphs are available?
+A:
+
+* AHI trend graph
+* RMS trend graph
+* Kurtosis trend graph
+* Acceleration graphs
+* Alert history graph
+
+Q: Why should I monitor trends instead of single values?
+A: Trends provide more reliable information about machine deterioration over time.
+
+Q: What does a sudden spike in RMS indicate?
+A: It may indicate sudden mechanical changes such as impacts, imbalance, or severe faults.
+
+Q: What does a sudden spike in kurtosis indicate?
+A: It often suggests impulsive events such as bearing defects or repeated impacts.
+
+Q: Why are there occasional spikes in acceleration?
+A: Temporary spikes may occur due to startup conditions, impacts, or environmental disturbances.
+
+Q: Why does AHI sometimes fluctuate?
+A: Minor fluctuations are normal due to changing machine conditions.
+
+Q: Why does the dashboard smooth data?
+A: Smoothing reduces noise and minimizes false alarms.
+
+Q: What is a rolling average?
+A: A rolling average computes the average of recent measurements to produce more stable indicators.
+
+Q: Why is a 30-snapshot rolling window used?
+A: It balances responsiveness with stability.
+
+Q: What is lead time?
+A: Lead time is the period between fault detection and actual machine failure.
+
+Q: Why is lead time important?
+A: It provides maintenance teams enough time to plan repairs before catastrophic failure occurs.
+
+Q: What is Remaining Useful Life (RUL)?
+A: RUL estimates how much operational life remains before failure.
+
+Q: Does the current system estimate RUL?
+A: The current version focuses on health estimation and anomaly detection, but future versions may include RUL prediction.
+
+Q: Why are live values delayed?
+A: Delays may result from network latency, backend processing, or communication issues.
+
+Q: Why are there missing live data points?
+A: Temporary network interruptions or device restarts may cause missing records.
+
+Q: Why is no live data appearing?
+A: Possible causes include:
+
+* Device offline
+* Sensor failure
+* Backend server issues
+* Network problems
+
+Q: How can I determine if a machine is deteriorating?
+A: Indicators include:
+
+* Increasing RMS
+* Increasing kurtosis
+* Increasing anomaly score
+* Decreasing AHI
+
+Q: What should I do if AHI is continuously decreasing?
+A: Schedule an inspection and monitor the machine more closely.
+
+Q: What should I do if the machine enters Critical status?
+A: Immediate inspection and corrective action are recommended.
+
+Q: Can live data be exported?
+A: Yes. Historical and live data can typically be exported through the dashboard.
+
+Q: Can multiple users monitor live data simultaneously?
+A: Yes. Multiple users can view live machine information concurrently.
+
+Q: How long is historical live data stored?
+A: Storage duration depends on system configuration and database policies.
+
+Q: Why is machine comparison useful?
+A: Comparing machines helps identify abnormal behavior relative to similar assets.
+
+Q: Can environmental conditions affect live data?
+A: Yes. Temperature, nearby machinery, and operating conditions can influence vibration measurements.
+
+Q: Why is machine startup behavior different?
+A: Machines often exhibit temporary vibration increases during startup and shutdown phases.
+
+Q: Why is machine load information important?
+A: Different loads can significantly affect vibration behavior and health indicators.
+
+Q: How should operators use live data?
+A:
+
+1. Monitor trends.
+2. Investigate unusual changes.
+3. Respond to alerts promptly.
+4. Schedule maintenance when degradation is detected.
+5. Avoid relying solely on a single measurement.
+

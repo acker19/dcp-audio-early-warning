@@ -1,0 +1,215 @@
+IOT SENSOR SETUP GUIDE – ADDITIONAL FAQ
+
+Q: What is the purpose of the IoT device?
+A: The IoT device collects vibration data from machines, computes health indicators, and transmits information to the dashboard.
+
+Q: What hardware components are required?
+A: The system requires:
+
+* ESP32 microcontroller
+* Accelerometer or vibration sensor
+* Power supply
+* WiFi connection
+* Mounting accessories
+
+Q: Which microcontroller is used?
+A: The prototype uses the ESP32 due to its processing capability and built-in WiFi support.
+
+Q: What type of sensor is used?
+A: The system uses an accelerometer or vibration sensor capable of measuring machine vibrations.
+
+Q: Why are vibration sensors used?
+A: Vibration changes often occur before mechanical failures become severe, making them useful for early fault detection.
+
+Q: Where should the sensor be installed?
+A: The sensor should be mounted as close as possible to the machine's bearings or vibration source.
+
+Q: What are the best sensor locations?
+A:
+
+* Bearing housings
+* Motor casing
+* Fan supports
+* Pump bearing assemblies
+* Gearbox housing
+
+Q: Where should the sensor NOT be installed?
+A:
+
+* Loose surfaces
+* Plastic covers
+* Moving components
+* Areas with excessive external interference
+
+Q: Why is sensor mounting important?
+A: Improper mounting can introduce noise and inaccurate vibration measurements.
+
+Q: How should the sensor be mounted?
+A: The sensor should be tightly attached using screws, adhesive mounts, magnets, or industrial mounting brackets.
+
+Q: Can I use adhesive tape?
+A: Temporary testing may use tape, but permanent installations should use rigid mounting methods.
+
+Q: Can one sensor monitor multiple machines?
+A: Generally, one sensor should monitor one machine to ensure accurate diagnostics.
+
+Q: Can multiple sensors be installed on one machine?
+A: Yes. Multiple sensors can improve fault localization and monitoring accuracy.
+
+Q: What orientation should the sensor have?
+A: The sensor should be aligned to measure horizontal and vertical vibrations consistently.
+
+Q: Why are horizontal and vertical measurements required?
+A: Different faults may appear more strongly in different vibration directions.
+
+Q: What is the sampling frequency?
+A: The system uses a sampling frequency of approximately 25.6 kHz.
+
+Q: Why is a high sampling frequency necessary?
+A: Higher sampling frequencies capture high-frequency vibration signatures associated with early bearing faults.
+
+Q: What is a snapshot?
+A: A snapshot is a short window of collected vibration samples used for analysis.
+
+Q: How long is one snapshot?
+A: One snapshot typically lasts 0.1 seconds.
+
+Q: How many samples are collected per snapshot?
+A: Approximately 2560 samples.
+
+Q: What data is transmitted to the dashboard?
+A:
+
+* Timestamp
+* Horizontal acceleration
+* Vertical acceleration
+* RMS
+* Kurtosis
+* Anomaly score
+* AHI
+* Device status
+
+Q: Does the IoT device perform local processing?
+A: Yes. Some health calculations can be performed on the device before transmission.
+
+Q: What communication methods are supported?
+A:
+
+* WiFi
+* MQTT
+* HTTP APIs
+* Future support for LoRa or GSM
+
+Q: Does the device need internet access?
+A: Internet access is required for cloud synchronization and remote monitoring.
+
+Q: What happens if WiFi is unavailable?
+A: The device may temporarily store data locally and upload it when connectivity is restored.
+
+Q: How is the device powered?
+A: The device may use:
+
+* USB power
+* AC adapter
+* Industrial power supply
+* Battery backup
+
+Q: What voltage is required?
+A: The ESP32 generally operates at 3.3 V logic and is commonly powered through a 5 V input source.
+
+Q: How can I verify that the sensor is working?
+A: Observe live vibration readings on the dashboard or check serial monitor outputs.
+
+Q: How do I know if the sensor is disconnected?
+A: Symptoms may include:
+
+* No incoming data
+* Constant zero values
+* Offline device status
+
+Q: Why are my vibration values extremely high?
+A: Possible causes include:
+
+* Loose mounting
+* Severe machine faults
+* Incorrect calibration
+* Sensor malfunction
+
+Q: Why are vibration values always near zero?
+A: Possible causes include:
+
+* Sensor disconnection
+* Wiring issues
+* Incorrect sensor orientation
+* Device malfunction
+
+Q: How often should the sensor be calibrated?
+A: Calibration should be performed periodically or after hardware modifications.
+
+Q: Does temperature affect measurements?
+A: Extreme temperatures may influence sensor performance and should be considered during deployment.
+
+Q: Can environmental noise affect the readings?
+A: Yes. Nearby machines and external vibrations may introduce measurement noise.
+
+Q: Can the device operate continuously?
+A: Yes. The system is designed for continuous condition monitoring.
+
+Q: How much data does the system generate?
+A: The amount depends on sampling frequency and transmission intervals.
+
+Q: Is data stored locally?
+A: Depending on configuration, data may be temporarily stored in flash memory or an SD card.
+
+Q: What happens if power is lost?
+A: Data transmission stops until power is restored. Buffered data may be uploaded afterward if local storage is enabled.
+
+Q: How can I restart the device?
+A: The device can be restarted through:
+
+* Physical reset button
+* Remote restart command
+* Power cycling
+
+Q: How do I update device firmware?
+A: Firmware updates may be performed manually or through Over-The-Air (OTA) updates.
+
+Q: Does the system support OTA updates?
+A: Future versions may support secure remote firmware updates.
+
+Q: How do I register a new IoT device?
+A:
+
+1. Power on the device.
+2. Connect it to WiFi.
+3. Obtain the device ID.
+4. Register the ID on the dashboard.
+5. Assign the device to a machine.
+
+Q: What is the device ID?
+A: The device ID uniquely identifies each monitoring node.
+
+Q: Can devices be moved between machines?
+A: Yes, but recalibration and reassignment are recommended.
+
+Q: How many devices can the system support?
+A: The architecture can support multiple devices depending on server resources and network capacity.
+
+Q: How do I know if the device is online?
+A: The dashboard will display an Online status and recent timestamps.
+
+Q: What does Offline status mean?
+A: The server has not received data from the device within the expected period.
+
+Q: How secure is communication?
+A: Communication may use authentication tokens, encrypted APIs, and secure network protocols.
+
+Q: What maintenance does the IoT device require?
+A:
+
+* Inspect mounting periodically
+* Check wiring connections
+* Verify network connectivity
+* Update firmware when necessary
+* Recalibrate sensors periodically
+

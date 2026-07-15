@@ -1,0 +1,115 @@
+PREDICTIVE MAINTENANCE SYSTEM FAQ
+
+Q: What is predictive maintenance?
+A: Predictive maintenance uses sensor data and artificial intelligence to detect early signs of machine degradation before a failure occurs.
+
+Q: What is AHI?
+A: AHI stands for Asset Health Index. It is a value between 0 and 1 that represents the health condition of a machine.
+
+Q: What does an AHI of 1.0 mean?
+A: An AHI of 1.0 indicates that the machine is operating under ideal conditions with no significant anomalies detected.
+
+Q: What does an AHI below 0.20 mean?
+A: An AHI below 0.20 indicates severe degradation and possible imminent failure. Immediate inspection is recommended.
+
+Q: How is AHI calculated?
+A: AHI is calculated using RMS, kurtosis, anomaly scores, and energy deviation metrics.
+
+Q: What is RMS?
+A: RMS (Root Mean Square) measures the overall vibration energy of the machine.
+
+Q: What is kurtosis?
+A: Kurtosis measures impulsive vibration events and is useful for detecting bearing defects and impacts.
+
+Q: What is an anomaly score?
+A: The anomaly score represents how abnormal the machine behavior is compared to normal operating conditions.
+
+Q: What is energy deviation?
+A: Energy deviation measures changes in vibration energy under different loading conditions.
+
+Q: Why are vibration measurements important?
+A: Abnormal vibrations are often early indicators of wear, imbalance, misalignment, looseness, and bearing faults.
+
+Q: What types of faults can this system detect?
+A: The system can help identify bearing defects, imbalance, shaft misalignment, looseness, excessive wear, and abnormal operating conditions.
+
+Q: Which machines can use this system?
+A: The system can be used on motors, pumps, fans, compressors, turbines, conveyors, and other rotating machinery.
+
+Q: What sensors are used?
+A: The system uses vibration sensors or accelerometers mounted on the machine housing.
+
+Q: What data does the IoT device collect?
+A: The device collects timestamps, horizontal acceleration, vertical acceleration, RMS, kurtosis, anomaly scores, and AHI values.
+
+Q: How often is data updated?
+A: Data is updated whenever the IoT device transmits a new snapshot to the server.
+
+Q: What do the dashboard colors mean?
+
+Green:
+Machine is healthy.
+
+Yellow:
+Early warning signs detected.
+
+Orange:
+Machine degradation detected.
+
+Red:
+Critical condition detected.
+
+Q: Can the system send notifications?
+A: Yes. The system can send alerts when machine health drops below predefined thresholds.
+
+Q: What should I do when a machine enters Warning mode?
+A: Increase monitoring frequency and schedule an inspection.
+
+Q: What should I do when a machine enters Critical mode?
+A: Perform immediate inspection and consider shutting down the machine to prevent catastrophic failure.
+
+Q: Can this system predict remaining useful life?
+A: The current version focuses on anomaly detection and health estimation, but future versions may include remaining useful life prediction.
+
+Q: Why is my machine showing high RMS values?
+A: High RMS values may indicate excessive vibration caused by imbalance, looseness, or mechanical degradation.
+
+Q: Why is my machine showing high kurtosis values?
+A: High kurtosis usually indicates impulsive events such as bearing defects or repeated impacts.
+
+Q: Why is there no data on my dashboard?
+A: Possible causes include device power failure, network issues, server downtime, or sensor disconnection.
+
+Q: Why are there false alarms?
+A: False alarms may occur due to loose sensor mounting, environmental noise, incorrect thresholds, or improper calibration.
+
+Q: How do I add a new machine?
+A: Navigate to the Assets page, select Add Machine, enter machine information, and assign an IoT device.
+
+Q: How do I view historical data?
+A: Open the machine page and select the History section to view previous measurements.
+
+Q: How do I download reports?
+A: Navigate to Reports, choose the machine and date range, and select Download.
+
+Q: Can multiple users access the dashboard?
+A: Yes. Multiple authorized users can monitor machines simultaneously.
+
+Q: Can one IoT device monitor multiple machines?
+A: Depending on hardware configuration, one device may monitor one or several machines.
+
+Q: Is internet access required?
+A: Internet access is required for cloud synchronization and remote monitoring.
+
+Q: What happens if the internet connection is lost?
+A: The IoT device may temporarily store data locally and upload it once connectivity is restored.
+
+Q: How accurate is the anomaly detection model?
+A: The current autoencoder model achieved an AUC-ROC of approximately 0.94 during testing.
+
+Q: Which datasets were used during development?
+A: Development and validation were performed using the MIMII and PRONOSTIA bearing datasets.
+
+Q: Can this system be expanded in the future?
+A: Yes. Future improvements may include RUL prediction, additional sensors, and advanced maintenance recommendations.
+

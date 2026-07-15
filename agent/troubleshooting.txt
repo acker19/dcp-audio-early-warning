@@ -1,0 +1,248 @@
+TROUBLESHOOTING GUIDE – ADDITIONAL FAQ
+
+Q: Why is my dashboard showing "No Data Available"?
+A: The IoT device may be offline, disconnected from WiFi, improperly configured, or the backend server may not be running.
+
+Q: Why are all sensor readings equal to zero?
+A: Possible causes include:
+
+* Sensor disconnection
+* Faulty wiring
+* Sensor initialization failure
+* Incorrect GPIO configuration
+* Device firmware issues
+
+Q: Why are sensor readings not changing?
+A: The sensor may be frozen, improperly mounted, disconnected, or the machine may not be operating.
+
+Q: Why is the device showing Offline status?
+A: The server has not received any data from the device within the expected communication interval.
+
+Q: Why is my device frequently disconnecting?
+A: Possible causes include:
+
+* Weak WiFi signal
+* Power instability
+* Router issues
+* Firmware crashes
+* Network congestion
+
+Q: Why is the dashboard updating very slowly?
+A: Possible causes include:
+
+* Poor internet connection
+* High server load
+* Large database queries
+* Backend performance issues
+
+Q: Why are graph updates delayed?
+A: Data processing or communication delays may temporarily slow graph updates.
+
+Q: Why does the dashboard show old timestamps?
+A: The device may have lost synchronization, stopped transmitting data, or local buffering may still be uploading older records.
+
+Q: Why are there missing data points in my graphs?
+A: Missing data may occur due to:
+
+* Temporary network outages
+* Device restarts
+* Sensor failures
+* Server downtime
+
+Q: Why are my AHI values changing rapidly?
+A: Rapid changes may result from:
+
+* Sudden machine faults
+* Improper sensor mounting
+* Excessive environmental vibration
+* Temporary operating condition changes
+
+Q: Why are AHI values always close to 1.0?
+A: The machine may be healthy, thresholds may be too lenient, or there may be issues in feature extraction.
+
+Q: Why are AHI values always close to 0?
+A: Possible causes include:
+
+* Severe machine faults
+* Incorrect calibration
+* Sensor malfunction
+* Software bugs in calculations
+
+Q: Why are there frequent false alarms?
+A: False alarms may occur due to:
+
+* Loose sensor mounting
+* Excessive external vibration
+* Incorrect thresholds
+* Noise contamination
+
+Q: Why does the machine remain in Critical status after maintenance?
+A: The system may still be processing old data, thresholds may need recalibration, or the fault may not have been completely resolved.
+
+Q: Why does the system still show alerts after the machine has been repaired?
+A: Alerts may remain active until manually acknowledged or until sufficient healthy data is collected.
+
+Q: Why is RMS extremely high?
+A: High RMS values may indicate:
+
+* Severe imbalance
+* Misalignment
+* Mechanical looseness
+* Bearing degradation
+
+Q: Why is kurtosis extremely high?
+A: High kurtosis often indicates repeated impacts or localized defects such as damaged bearings.
+
+Q: Why is the anomaly score high while RMS appears normal?
+A: Some faults generate impulsive events that significantly affect anomaly detection without greatly increasing overall vibration energy.
+
+Q: Why is the anomaly score always zero?
+A: Possible causes include:
+
+* Incorrect feature extraction
+* Model loading failure
+* Software bugs
+* Sensor data not being processed correctly
+
+Q: Why are machine status colors incorrect?
+A: Alert thresholds or frontend status mappings may be configured incorrectly.
+
+Q: Why is the chatbot giving incorrect answers?
+A: The knowledge base may need updating, or the chatbot may not have sufficient context.
+
+Q: Why can't I log into the dashboard?
+A: Verify:
+
+* Username
+* Password
+* Internet connection
+* Server availability
+
+Q: Why am I getting authentication errors?
+A: Your session may have expired or your API token may be invalid.
+
+Q: Why can't I add a new machine?
+A: Possible causes include:
+
+* Missing required information
+* Duplicate machine ID
+* Insufficient user permissions
+
+Q: Why can't I delete a machine?
+A: You may not have administrator privileges.
+
+Q: Why are reports not generating?
+A: Possible causes include:
+
+* Backend errors
+* Database issues
+* Invalid date ranges
+* Server overload
+
+Q: Why can't I download reports?
+A: Verify your internet connection and ensure report generation has completed successfully.
+
+Q: Why are exported files empty?
+A: The selected time range may not contain any available data.
+
+Q: Why is the ESP32 continuously restarting?
+A: Possible causes include:
+
+* Insufficient power supply
+* Memory issues
+* Firmware crashes
+* Hardware faults
+
+Q: Why does the ESP32 become hot?
+A: Excessive heat may indicate:
+
+* Overvoltage
+* Hardware damage
+* Excessive processing load
+* Short circuits
+
+Q: Why does the sensor become hot?
+A: Sensors normally generate very little heat. Excessive heating may indicate hardware damage or wiring problems.
+
+Q: Why is WiFi connection failing?
+A: Verify:
+
+* SSID and password
+* Signal strength
+* Router configuration
+* Network availability
+
+Q: Why is MQTT communication failing?
+A: Verify:
+
+* Broker address
+* Port number
+* Authentication credentials
+* Internet connectivity
+
+Q: Why are API requests failing?
+A: Check:
+
+* Backend server status
+* API endpoints
+* Authentication tokens
+* Firewall settings
+
+Q: Why is the backend server not starting?
+A: Possible causes include:
+
+* Missing dependencies
+* Incorrect configuration files
+* Port conflicts
+* Database connection issues
+
+Q: Why is the database connection failing?
+A: Verify:
+
+* Database credentials
+* Network connectivity
+* Database server status
+
+Q: Why is the device sending duplicate data?
+A: Duplicate transmission may occur after network interruptions or repeated retries.
+
+Q: Why is memory usage increasing continuously?
+A: This may indicate:
+
+* Memory leaks
+* Excessive buffering
+* Improper data cleanup
+
+Q: Why is CPU usage very high?
+A: Possible causes include:
+
+* Excessive computations
+* Large numbers of connected devices
+* Inefficient backend processing
+
+Q: Why is the device clock incorrect?
+A: The device may have failed to synchronize with the network time server.
+
+Q: Why are timestamps incorrect?
+A: Incorrect timezone configuration or clock synchronization failures may be responsible.
+
+Q: What should I do if the system completely stops working?
+A:
+
+1. Verify power supply.
+2. Check sensor connections.
+3. Verify network connectivity.
+4. Restart the IoT device.
+5. Restart backend services.
+6. Check server logs.
+7. Contact the system administrator if the issue persists.
+
+Q: How can I verify that the entire system is functioning properly?
+A:
+
+1. Confirm the device is online.
+2. Verify sensor readings are changing.
+3. Check that graphs update in real time.
+4. Confirm alerts are generated correctly.
+5. Test report generation and data export functionality.
+

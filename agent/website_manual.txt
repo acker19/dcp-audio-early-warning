@@ -1,0 +1,197 @@
+WEBSITE USER MANUAL – ADDITIONAL FAQ
+
+Q: What is the Dashboard page?
+A: The Dashboard provides an overview of all monitored machines, including their current health status, alerts, and recent activity.
+
+Q: What information is shown on the Dashboard?
+A: The dashboard displays:
+
+* Number of active machines
+* Healthy, Warning, Degraded, and Critical machines
+* Recent alerts
+* Real-time machine metrics
+* Health trend graphs
+
+Q: How do I navigate the website?
+A: Use the navigation sidebar to switch between Dashboard, Assets, Reports, Alerts, Settings, and User Management pages.
+
+Q: How do I register a new machine?
+A: Navigate to Assets → Add Machine, enter the machine information, assign an IoT device, and save.
+
+Q: What information is required when adding a machine?
+A: Required information includes:
+
+* Machine name
+* Machine ID or serial number
+* Machine type
+* Installation location
+* Assigned IoT device
+
+Q: How do I edit machine information?
+A: Open the machine details page and click Edit Machine.
+
+Q: How do I remove a machine?
+A: Open the machine details page and select Delete Machine.
+
+Q: How can I view real-time sensor readings?
+A: Open the machine details page and navigate to the Real-Time Monitoring section.
+
+Q: What real-time parameters are displayed?
+A: The system displays:
+
+* Horizontal acceleration
+* Vertical acceleration
+* RMS
+* Kurtosis
+* Anomaly score
+* Energy deviation
+* Asset Health Index (AHI)
+
+Q: How do I view machine history?
+A: Navigate to the machine page and select the History tab.
+
+Q: How do I filter historical data?
+A: Use the date and time filters to select the desired period.
+
+Q: How do I view machine trends?
+A: Open the Analytics or Trends section within the machine details page.
+
+Q: What graphs are available?
+A: Available graphs include:
+
+* AHI trend graph
+* RMS trend graph
+* Kurtosis trend graph
+* Alert frequency graph
+
+Q: How do I zoom into graphs?
+A: Use the graph controls or drag across the graph area to zoom into a specific time period.
+
+Q: Can I compare multiple machines?
+A: Yes. Select multiple machines and use the Compare feature.
+
+Q: How do I search for a machine?
+A: Use the search bar in the Assets page.
+
+Q: How do I sort machines?
+A: Machines can be sorted by:
+
+* Name
+* Status
+* Last update time
+* AHI value
+* Location
+
+Q: How do I know if a machine requires attention?
+A: Machines requiring attention will display Warning, Degraded, or Critical indicators.
+
+Q: What do the dashboard colors mean?
+
+Green:
+Healthy machine.
+
+Yellow:
+Warning condition.
+
+Orange:
+Degraded condition.
+
+Red:
+Critical condition.
+
+Gray:
+Offline device.
+
+Q: How do I view alerts?
+A: Navigate to the Alerts page.
+
+Q: What information is included in an alert?
+A: Alerts include:
+
+* Machine name
+* Timestamp
+* Alert level
+* Current AHI
+* Recommended action
+
+Q: How do I clear alerts?
+A: Open the alert details page and select Acknowledge or Resolve.
+
+Q: How do I configure alert thresholds?
+A: Navigate to Settings → Alert Configuration.
+
+Q: Can I disable notifications?
+A: Yes. Notification settings can be modified under Settings.
+
+Q: Can I receive email notifications?
+A: Yes, email notifications can be enabled in Notification Settings.
+
+Q: Can I receive SMS notifications?
+A: Depending on system configuration, SMS notifications may be enabled.
+
+Q: How do I generate reports?
+A: Navigate to Reports and select:
+
+* Machine
+* Time period
+* Report type
+
+Q: What report formats are supported?
+A: Reports may be downloaded as:
+
+* PDF
+* CSV
+* Excel
+
+Q: What information is included in reports?
+A: Reports include:
+
+* Machine statistics
+* Health trends
+* Alert history
+* Maintenance recommendations
+
+Q: How do I export data?
+A: Use the Export button on the History or Reports pages.
+
+Q: How often does the dashboard refresh?
+A: The dashboard updates automatically whenever new data is received.
+
+Q: What does Offline status mean?
+A: Offline indicates that the IoT device has not communicated with the server within the expected period.
+
+Q: How do I reconnect an offline device?
+A: Verify:
+
+* Device power
+* WiFi connection
+* Server availability
+* Device registration
+
+Q: Can multiple users use the system simultaneously?
+A: Yes. Multiple users can monitor machines concurrently.
+
+Q: How do I change my password?
+A: Navigate to Profile → Account Settings → Change Password.
+
+Q: How do I change the website theme?
+A: Navigate to Settings → Appearance.
+
+Q: How do I log out?
+A: Click the profile icon and select Logout.
+
+Q: What should I do if graphs are not loading?
+A: Verify internet connectivity and refresh the page.
+
+Q: What should I do if sensor data stops updating?
+A: Check whether the IoT device is online and verify server connectivity.
+
+Q: What should I do if I accidentally delete a machine?
+A: Contact the system administrator to restore the machine configuration if backups are available.
+
+Q: Can the dashboard be accessed from mobile devices?
+A: Yes. The dashboard supports mobile and desktop browsers.
+
+Q: Does the website support dark mode?
+A: Yes. Dark mode can be enabled through Appearance Settings.
+

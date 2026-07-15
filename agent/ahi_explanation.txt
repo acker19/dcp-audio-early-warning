@@ -1,0 +1,150 @@
+ASSET HEALTH INDEX (AHI) – ADDITIONAL FAQ
+
+Q: What is the Asset Health Index (AHI)?
+A: The Asset Health Index (AHI) is a numerical score between 0 and 1 that represents the current health condition of a machine based on its vibration characteristics.
+
+Q: Why is AHI important?
+A: AHI provides a simple way to understand machine health without requiring users to interpret complex vibration data.
+
+Q: What does an AHI of 1.0 mean?
+A: An AHI of 1.0 indicates that the machine is operating under normal conditions with no significant abnormalities detected.
+
+Q: What does an AHI of 0.85 mean?
+A: An AHI of 0.85 indicates the machine is healthy and operating within acceptable limits.
+
+Q: What does an AHI of 0.75 mean?
+A: An AHI of 0.75 indicates a warning condition. Early signs of degradation have been detected, and the machine should be monitored more closely.
+
+Q: What does an AHI of 0.50 mean?
+A: An AHI of 0.50 indicates that the machine has noticeable degradation and maintenance should be scheduled soon.
+
+Q: What does an AHI of 0.20 mean?
+A: An AHI of 0.20 indicates the machine is in a critical condition and immediate inspection is recommended.
+
+Q: What happens if the AHI reaches zero?
+A: An AHI close to zero indicates extremely poor machine health and a very high risk of failure.
+
+Q: Why does AHI decrease?
+A: AHI decreases when abnormal vibration patterns become more severe.
+
+Q: Can AHI increase again?
+A: Yes. After maintenance, repairs, or replacement of faulty components, the AHI may improve if the machine returns to normal operating conditions.
+
+Q: Is a low AHI always caused by bearing faults?
+A: No. A low AHI indicates abnormal machine behavior, which may result from bearing faults, imbalance, misalignment, looseness, or other mechanical issues.
+
+Q: What data is used to calculate AHI?
+A: The system uses RMS, kurtosis, anomaly score, and energy deviation to estimate machine health.
+
+Q: What is RMS?
+A: RMS measures the overall vibration energy of the machine.
+
+Q: Why is RMS important?
+A: Increasing RMS values often indicate increasing vibration severity and possible machine degradation.
+
+Q: What is kurtosis?
+A: Kurtosis measures the presence of impulsive vibration events that commonly occur with damaged bearings or repeated impacts.
+
+Q: Why is kurtosis included in the calculation?
+A: Kurtosis helps detect faults that may not significantly increase overall vibration levels but produce sharp impact events.
+
+Q: What is the anomaly score?
+A: The anomaly score estimates how different the current machine behavior is compared to healthy operating conditions.
+
+Q: How is the anomaly score generated?
+A: It is computed from vibration features using the system's anomaly detection algorithm.
+
+Q: What is energy deviation?
+A: Energy deviation measures how vibration energy changes under different operating loads.
+
+Q: Why is energy deviation included?
+A: Machines often operate under different loads, and energy deviation helps account for these variations.
+
+Q: What is the purpose of load factors?
+A: Load factors adjust the AHI calculation to reflect different operating conditions.
+
+Q: What load factors are used?
+A:
+Condition 1: 0.80
+
+Condition 2: 0.85
+
+Condition 3: 0.90
+
+Q: Why is smoothing applied?
+A: Smoothing reduces temporary fluctuations and prevents unnecessary alerts caused by short-duration vibration spikes.
+
+Q: What smoothing method is used?
+A: A rolling average over 30 consecutive snapshots.
+
+Q: Why is a rolling average used?
+A: It produces more stable health estimates and reduces false alarms.
+
+Q: Why isn't AHI updated from a single vibration reading?
+A: Single readings may contain noise or transient events that do not accurately represent the machine's condition.
+
+Q: How often is AHI updated?
+A: AHI is recalculated whenever new vibration data is processed.
+
+Q: What is the alert threshold?
+A: The system generates alerts when the calculated AHI falls below the configured warning threshold.
+
+Q: What is the critical threshold?
+A: Machines with an AHI of 0.20 or lower are classified as Critical.
+
+Q: What do the AHI status levels mean?
+
+Healthy:
+AHI between 0.80 and 1.00.
+
+Warning:
+AHI between 0.68 and 0.80.
+
+Degraded:
+AHI between 0.20 and 0.68.
+
+Critical:
+AHI less than or equal to 0.20.
+
+Q: Can users change AHI thresholds?
+A: Depending on system configuration, administrators may adjust alert thresholds to suit specific applications.
+
+Q: Does AHI predict the exact failure time?
+A: No. AHI estimates the current health condition and likelihood of degradation but does not provide an exact failure date.
+
+Q: Can AHI replace physical inspections?
+A: No. AHI is a decision-support tool that complements regular maintenance and inspections.
+
+Q: What happens if AHI suddenly drops?
+A: A sudden drop may indicate rapid fault development, sensor issues, or significant changes in operating conditions.
+
+Q: Why is my AHI fluctuating?
+A: Small fluctuations are normal and may result from changes in machine load or operating conditions.
+
+Q: What should I do if AHI remains in the Warning range?
+A: Increase monitoring frequency and schedule a maintenance inspection.
+
+Q: What should I do if AHI remains in the Degraded range?
+A: Plan maintenance as soon as practical and monitor the machine closely.
+
+Q: What should I do if AHI reaches the Critical range?
+A: Stop the machine if safe to do so, inspect it immediately, and repair or replace faulty components.
+
+Q: Is AHI the only indicator I should monitor?
+A: No. Users should also review RMS, kurtosis, anomaly score, trends, and alert history for a complete assessment.
+
+Q: Can AHI be used for different machine types?
+A: Yes. The AHI framework can be adapted for various rotating machines, although thresholds and models may need adjustment.
+
+Q: Why is trend analysis more important than a single AHI value?
+A: A trend shows whether machine health is improving, stable, or deteriorating over time, enabling better maintenance decisions.
+
+Q: How does the dashboard display AHI?
+A: AHI is shown as a numerical value, a color-coded health status, and historical trend graphs.
+
+Q: What datasets were used to develop and validate the AHI approach?
+A: The system was developed and evaluated using publicly available datasets such as MIMII and PRONOSTIA, which contain vibration data from healthy and faulty machines.
+
+Q: Can future versions improve AHI?
+A: Yes. Future enhancements may include adaptive thresholds, machine-specific models, additional sensor inputs, and Remaining Useful Life (RUL) estimation.
+
