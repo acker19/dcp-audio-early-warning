@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from google import genai
+from dotenv import load_dotenv
+import os
 
-with open("Gemini Api Key.txt") as f:
-    key = f.read().split()[-1].strip()
+load_dotenv()
+
+key = os.getenv("GEMINI_API_KEY")
+
+if not key:
+    raise ValueError("GEMINI_API_KEY not found in environment variables.")
 
 client = genai.Client(api_key=key)
 
@@ -22,6 +28,9 @@ for file in [
     with open(file, "r", encoding="utf-8") as f:
         docs += f.read() + "\n"
 
+print("Documentation loaded.")
+print(f"Characters loaded: {len(docs)}")
+
 
 class ChatRequest(BaseModel):
     message: str
@@ -38,19 +47,27 @@ def chat(req: ChatRequest):
     try:
 
         prompt = f"""
-You are an AI assistant for an Industrial Predictive Maintenance Dashboard.
+        You are the support assistant for an Industrial Predictive Maintenance Dashboard.
 
-Only answer questions related to the dashboard, sensors,
-Asset Health Index (AHI), website usage, troubleshooting,
-and predictive maintenance.
+        Rules:
+        1. Answer ONLY using the provided documentation.
+        2. Only answer questions about:
+        - Asset Health Index (AHI)
+        - Sensors and sensor setup
+        - Dashboard usage
+        - Predictive maintenance
+        - Troubleshooting
+        - Live monitoring data
+        3. If the answer is not contained in the documentation, reply:
 
-Documentation:
+        "I do not have information about that in the system documentation."
 
-{docs}
+        Documentation:
+        {docs}
 
-User Question:
-{req.message}
-"""
+        User Question:
+        {req.message}
+        """
 
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
