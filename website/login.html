@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in · EchoWatch</title>
+<meta name="description" content="Plant-scoped login for the EchoWatch dashboard.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>EchoWatch</a>
+    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="technology.html">Technology</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="vision.html">Vision</a>
+      <span class="sep"></span>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="active">Log in</a>
+    </div>
+  </div>
+</nav>
+<main>
+<section class="hero" style="padding-bottom:10px;">
+  <div class="wrap" style="max-width:420px; margin:0 auto;">
+    <div class="eyebrow">Plant access</div>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.4rem);">Sign in</h1>
+    <p class="lede">Access is limited to provisioned plant accounts.</p>
+
+    <form class="card login-card" id="loginForm" style="margin-top:28px;" autocomplete="on">
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" required
+               placeholder="you@plant.example">
+      </div>
+      <div class="form-row">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required
+               placeholder="Password">
+      </div>
+      <p id="loginError" class="login-error" hidden></p>
+      <button class="btn btn-primary" type="submit" id="loginBtn" style="width:100%; justify-content:center;">
+        Sign in
+      </button>
+    </form>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fbrand">EchoWatch · DCP University Engineering Challenge, Track 2</div>
+    <ul class="flinks">
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="script.js"></script>
+<script src="auth-client.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (EchoAuth.isLoggedIn()) {
+    const params = new URLSearchParams(location.search);
+    location.href = params.get('next') || 'dashboard.html';
+    return;
+  }
+
+  const form = document.getElementById('loginForm');
+  const errEl = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errEl.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Signing in…';
+    try {
+      await EchoAuth.login(
+        document.getElementById('email').value.trim(),
+        document.getElementById('password').value
+      );
+      const params = new URLSearchParams(location.search);
+      location.href = params.get('next') || 'dashboard.html';
+    } catch (err) {
+      errEl.textContent = 'Invalid email or password.';
+      errEl.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Sign in';
+    }
+  });
+});
+</script>
+</body>
+</html>
