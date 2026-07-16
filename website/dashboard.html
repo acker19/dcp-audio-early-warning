@@ -4,16 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard · EchoWatch</title>
-<meta name="description" content="Live per-machine readings, alerts, and the buzzer failsafe.">
+<meta name="description" content="Live per-machine AHI readings, alerts, and the buzzer failsafe.">
 <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
 <nav class="nav">
   <div class="wrap">
     <a class="brand" href="index.html"><span class="dot"></span>EchoWatch</a>
     <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-    <div class="navlinks"><a href="index.html">Home</a><a href="problem.html">Problem</a><a href="technology.html">Technology</a><a href="dashboard.html" class="active">Dashboard</a><a href="vision.html">Vision</a><span class="sep"></span><a href="team.html">Team</a><a href="contact.html">Contact</a></div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="technology.html">Technology</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="vision.html">Vision</a>
+      <span class="sep"></span>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 </nav>
 <main>
@@ -22,14 +30,21 @@
   <div class="wrap">
     <div class="eyebrow">Live monitoring</div>
     <h1>Six machines, one view.</h1>
-    <p class="lede">Every tile below follows the same pipeline described on the Technology page.</p>
+    <p class="lede">
+      PRONOSTIA-schema edge payload → AHI status.
+      Welcome, <span id="userGreet">operator</span>.
+      Plant: <span id="plantLabel" class="mono">—</span>
+    </p>
     <div class="dash-head" style="margin-top:28px;">
       <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-        <span class="pill" id="netPill"><span class="d"></span><span id="netLabel">Network: connected</span></span>
-        <span class="mode-flag">Simulated data &mdash; demo mode</span>
+        <span class="pill" id="netPill"><span class="d"></span><span id="netLabel">Network: connecting…</span></span>
+        <span class="mode-flag" id="modeFlag">Simulated / replayed feed — not live plant sensors</span>
+        <span class="mode-flag" id="staleLabel">Last updated —</span>
       </div>
       <button class="btn btn-ghost" id="netToggle" type="button">Simulate network loss</button>
     </div>
+    <p id="threshLabel" class="mono" style="font-size:0.72rem; color:var(--ink-dim); margin-top:12px;"></p>
+    <p id="apiError" class="login-error" hidden style="margin-top:12px;"></p>
   </div>
 </section>
 
@@ -38,74 +53,104 @@
     <div class="grid grid-3" id="tileGrid">
       <div class="tile" data-machine="crusher">
         <div class="tile-top">
-          <div><h3>Crushers</h3><div class="sub">Node 01 &middot; ESP32-S3</div></div>
+          <div><h3>Crushers</h3><div class="sub">Node 01 · ESP32-S3</div></div>
           <span class="badge normal" data-badge><span class="d"></span><span data-status>Normal</span></span>
         </div>
-        <canvas data-wave data-color="#4FB8AC" data-mode="live" data-amp="0.4"></canvas>
+        <div class="ahi-row">
+          <div class="reading"><div class="v mono" data-ahi>—</div><div class="k">AHI</div></div>
+        </div>
+        <canvas data-trend width="280" height="52" aria-label="AHI trend"></canvas>
         <div class="readings">
-          <div class="reading"><div class="v mono" data-r1>0.42 mm/s</div><div class="k">Vibration RMS</div></div>
-          <div class="reading"><div class="v mono" data-r2>0.04</div><div class="k">Acoustic score</div></div>
+          <div class="reading"><div class="v mono" data-r1>—</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r2>—</div><div class="k">Anomaly score</div></div>
+          <div class="reading"><div class="v mono" data-r3>—</div><div class="k">Kurtosis</div></div>
+          <div class="reading"><div class="v mono" data-r4>—</div><div class="k">Energy dev.</div></div>
         </div>
       </div>
       <div class="tile" data-machine="rawmill">
         <div class="tile-top">
-          <div><h3>Raw Mills</h3><div class="sub">Node 02 &middot; ESP32-S3</div></div>
+          <div><h3>Raw Mills</h3><div class="sub">Node 02 · ESP32-S3</div></div>
           <span class="badge normal" data-badge><span class="d"></span><span data-status>Normal</span></span>
         </div>
-        <canvas data-wave data-color="#4FB8AC" data-mode="live" data-amp="0.4"></canvas>
+        <div class="ahi-row">
+          <div class="reading"><div class="v mono" data-ahi>—</div><div class="k">AHI</div></div>
+        </div>
+        <canvas data-trend width="280" height="52" aria-label="AHI trend"></canvas>
         <div class="readings">
-          <div class="reading"><div class="v mono" data-r1>18.2 kPa</div><div class="k">Diff. pressure</div></div>
-          <div class="reading"><div class="v mono" data-r2>2.1 mm/s</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r1>—</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r2>—</div><div class="k">Anomaly score</div></div>
+          <div class="reading"><div class="v mono" data-r3>—</div><div class="k">Kurtosis</div></div>
+          <div class="reading"><div class="v mono" data-r4>—</div><div class="k">Energy dev.</div></div>
         </div>
       </div>
       <div class="tile" data-machine="coalmill">
         <div class="tile-top">
-          <div><h3>Coal Mills</h3><div class="sub">Node 03 &middot; ESP32-S3</div></div>
+          <div><h3>Coal Mills</h3><div class="sub">Node 03 · ESP32-S3</div></div>
           <span class="badge normal" data-badge><span class="d"></span><span data-status>Normal</span></span>
         </div>
-        <canvas data-wave data-color="#4FB8AC" data-mode="live" data-amp="0.4"></canvas>
+        <div class="ahi-row">
+          <div class="reading"><div class="v mono" data-ahi>—</div><div class="k">AHI</div></div>
+        </div>
+        <canvas data-trend width="280" height="52" aria-label="AHI trend"></canvas>
         <div class="readings">
-          <div class="reading"><div class="v mono" data-r1>1.6 mm/s</div><div class="k">Vibration RMS</div></div>
-          <div class="reading"><div class="v mono" data-r2>42.3 A</div><div class="k">Motor current</div></div>
+          <div class="reading"><div class="v mono" data-r1>—</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r2>—</div><div class="k">Anomaly score</div></div>
+          <div class="reading"><div class="v mono" data-r3>—</div><div class="k">Kurtosis</div></div>
+          <div class="reading"><div class="v mono" data-r4>—</div><div class="k">Energy dev.</div></div>
         </div>
       </div>
       <div class="tile" data-machine="kiln">
         <div class="tile-top">
-          <div><h3>Kilns</h3><div class="sub">Node 04 &middot; ESP32-S3</div></div>
+          <div><h3>Kilns</h3><div class="sub">Node 04 · ESP32-S3</div></div>
           <span class="badge normal" data-badge><span class="d"></span><span data-status>Normal</span></span>
         </div>
-        <canvas data-wave data-color="#4FB8AC" data-mode="live" data-amp="0.4"></canvas>
+        <div class="ahi-row">
+          <div class="reading"><div class="v mono" data-ahi>—</div><div class="k">AHI</div></div>
+        </div>
+        <canvas data-trend width="280" height="52" aria-label="AHI trend"></canvas>
         <div class="readings">
-          <div class="reading"><div class="v mono" data-r1>318 &deg;C</div><div class="k">Shell temp</div></div>
-          <div class="reading"><div class="v mono" data-r2>1.02</div><div class="k">Torque index</div></div>
+          <div class="reading"><div class="v mono" data-r1>—</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r2>—</div><div class="k">Anomaly score</div></div>
+          <div class="reading"><div class="v mono" data-r3>—</div><div class="k">Kurtosis</div></div>
+          <div class="reading"><div class="v mono" data-r4>—</div><div class="k">Energy dev.</div></div>
         </div>
       </div>
       <div class="tile" data-machine="cementmill">
         <div class="tile-top">
-          <div><h3>Cement Mills</h3><div class="sub">Node 05 &middot; ESP32-S3</div></div>
+          <div><h3>Cement Mills</h3><div class="sub">Node 05 · ESP32-S3</div></div>
           <span class="badge normal" data-badge><span class="d"></span><span data-status>Normal</span></span>
         </div>
-        <canvas data-wave data-color="#4FB8AC" data-mode="live" data-amp="0.4"></canvas>
+        <div class="ahi-row">
+          <div class="reading"><div class="v mono" data-ahi>—</div><div class="k">AHI</div></div>
+        </div>
+        <canvas data-trend width="280" height="52" aria-label="AHI trend"></canvas>
         <div class="readings">
-          <div class="reading"><div class="v mono" data-r1>0.06</div><div class="k">Acoustic score</div></div>
-          <div class="reading"><div class="v mono" data-r2>1.8 mm/s</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r1>—</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r2>—</div><div class="k">Anomaly score</div></div>
+          <div class="reading"><div class="v mono" data-r3>—</div><div class="k">Kurtosis</div></div>
+          <div class="reading"><div class="v mono" data-r4>—</div><div class="k">Energy dev.</div></div>
         </div>
       </div>
       <div class="tile" data-machine="packing">
         <div class="tile-top">
-          <div><h3>Packing</h3><div class="sub">Node 06 &middot; ESP32-S3</div></div>
+          <div><h3>Packing</h3><div class="sub">Node 06 · ESP32-S3</div></div>
           <span class="badge normal" data-badge><span class="d"></span><span data-status>Normal</span></span>
         </div>
-        <canvas data-wave data-color="#4FB8AC" data-mode="live" data-amp="0.4"></canvas>
+        <div class="ahi-row">
+          <div class="reading"><div class="v mono" data-ahi>—</div><div class="k">AHI</div></div>
+        </div>
+        <canvas data-trend width="280" height="52" aria-label="AHI trend"></canvas>
         <div class="readings">
-          <div class="reading"><div class="v mono" data-r1>48.9 kg</div><div class="k">Load cell</div></div>
-          <div class="reading"><div class="v mono" data-r2>6.4 A</div><div class="k">Motor current</div></div>
+          <div class="reading"><div class="v mono" data-r1>—</div><div class="k">Vibration RMS</div></div>
+          <div class="reading"><div class="v mono" data-r2>—</div><div class="k">Anomaly score</div></div>
+          <div class="reading"><div class="v mono" data-r3>—</div><div class="k">Kurtosis</div></div>
+          <div class="reading"><div class="v mono" data-r4>—</div><div class="k">Energy dev.</div></div>
         </div>
       </div>
     </div>
     <div class="buzzer-note">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ember)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 0 1 16 0"/><path d="M2 15h20"/><path d="M12 15V7"/><circle cx="12" cy="4" r="2"/><path d="M9 19h6"/></svg>
-      <p><strong>Buzzer fallback:</strong> this lives on the hardware itself, not on this page. If a node can't reach the network, its local buzzer fires independently &mdash; the indicator above just mirrors what the buzzer is already responding to.</p>
+      <p><strong>Buzzer fallback:</strong> lives on the hardware, not this page. If a node can't reach the network, its local buzzer fires independently — the network pill above mirrors that path. Alerts only fire after <strong>5 consecutive</strong> samples below threshold (parameter sheet).</p>
     </div>
   </div>
 </section>
@@ -124,7 +169,7 @@
 </main>
 <footer>
   <div class="wrap">
-    <div class="fbrand">EchoWatch &middot; DCP University Engineering Challenge, Track 2</div>
+    <div class="fbrand">EchoWatch · DCP University Engineering Challenge, Track 2</div>
     <ul class="flinks">
       <li><a href="contact.html">GitHub</a></li>
       <li><a href="contact.html">One-pager (PDF)</a></li>
@@ -133,62 +178,8 @@
   </div>
 </footer>
 <script src="script.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const people = {
-    crusher: "Tunde &middot; Crusher lead", rawmill: "Amaka &middot; Raw Mill lead",
-    coalmill: "Chidi &middot; Coal Mill lead", kiln: "Ngozi &middot; Kiln lead",
-    cementmill: "Femi &middot; Cement Mill lead", packing: "Sade &middot; Packing lead",
-  };
-  const names = { crusher:"Crushers", rawmill:"Raw Mills", coalmill:"Coal Mills", kiln:"Kilns", cementmill:"Cement Mills", packing:"Packing" };
-  let online = true;
-
-  function addLog(id, event) {
-    const tbody = document.getElementById('alertBody');
-    const tr = document.createElement('tr');
-    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    const routedTo = online ? people[id] : 'Local buzzer (network offline)';
-    tr.innerHTML = '<td class="mono">' + time + '</td><td>' + names[id] + '</td><td>' + event + '</td><td>' + routedTo + '</td>';
-    tbody.prepend(tr);
-    while (tbody.children.length > 6) tbody.removeChild(tbody.lastChild);
-  }
-
-  // seed a couple of rows
-  addLog('kiln', 'Baseline established');
-  addLog('crusher', 'Baseline established');
-
-  function tick() {
-    Object.keys(names).forEach(id => {
-      const tile = document.querySelector('[data-machine="' + id + '"]');
-      if (!tile) return;
-      const badge = tile.querySelector('[data-badge]');
-      const status = tile.querySelector('[data-status]');
-      const roll = Math.random();
-      if (roll > 0.95) {
-        badge.className = 'badge anomaly';
-        status.textContent = 'Anomaly';
-        addLog(id, 'Anomaly flagged');
-      } else if (roll > 0.87) {
-        badge.className = 'badge watch';
-        status.textContent = 'Watch';
-      } else {
-        badge.className = 'badge normal';
-        status.textContent = 'Normal';
-      }
-    });
-  }
-  setInterval(tick, 3500);
-
-  const netToggle = document.getElementById('netToggle');
-  const netPill = document.getElementById('netPill');
-  const netLabel = document.getElementById('netLabel');
-  netToggle.addEventListener('click', () => {
-    online = !online;
-    netPill.classList.toggle('offline', !online);
-    netLabel.textContent = online ? 'Network: connected' : 'Network: offline — buzzer active';
-    netToggle.textContent = online ? 'Simulate network loss' : 'Restore network';
-  });
-});
-</script>
+<script src="client-store.js"></script>
+<script src="auth-client.js"></script>
+<script src="dashboard-app.js"></script>
 </body>
 </html>

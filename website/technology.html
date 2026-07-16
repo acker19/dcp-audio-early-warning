@@ -19,20 +19,46 @@
 <main>
 
 <section class="hero" style="padding-bottom:10px;">
-  <div class="wrap">
-    <div class="eyebrow">How it works</div>
-    <h1>From vibration to a routed alert.</h1>
-    <p class="lede">Four stages, running on a single ESP32 node per machine &mdash; from the moment a bearing starts to sound different to the moment the right person is told.</p>
+  <div class="wrap hero-split">
+    <div class="hero-copy">
+      <div class="eyebrow">How it works</div>
+      <h1>From vibration to a routed alert.</h1>
+      <p class="lede">Four stages, running on a single ESP32 node per machine &mdash; from the moment a bearing starts to sound different to the moment the right person is told.</p>
+    </div>
+    <div class="hero-media">
+      <div class="media-frame media-frame--portrait media-frame--glow">
+        <img
+          src="media/render-3.png"
+          alt="EchoWatch annotated hardware layout"
+          width="1080"
+          height="1920"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high">
+      </div>
+      <p class="media-caption mono">Labeled Tier&nbsp;1 BOM</p>
+    </div>
   </div>
 </section>
 
-<section style="padding-top:10px;">
+<section style="padding-top:10px;" class="cv-auto">
   <div class="wrap">
     <div class="steps">
       <div class="step"><div class="idx mono">01</div><div><h4>Sense</h4><p>A MEMS microphone and accelerometer on the machine housing capture acoustic and vibration signal continuously, processed on-device.</p></div></div>
       <div class="step"><div class="idx mono">02</div><div><h4>Detect</h4><p>A 1D convolutional autoencoder &mdash; trained only on that machine's healthy operation &mdash; flags rising reconstruction error as a deviation from normal.</p></div></div>
       <div class="step"><div class="idx mono">03</div><div><h4>Alert</h4><p>Every reading and every anomaly score is logged to a time-series database, powering the live dashboard and a historical trend per machine.</p></div></div>
       <div class="step"><div class="idx mono">04</div><div><h4>Notify &amp; escalate</h4><p>A confirmed anomaly is routed to whoever is responsible for that specific machine. If the network is down and the alert can't be delivered, a local buzzer at the equipment fires instead &mdash; the alert never depends entirely on connectivity.</p></div></div>
+    </div>
+    <div class="tech-media-row">
+      <div class="media-frame media-frame--portrait">
+        <img src="media/render-1.png" alt="Sealed EchoWatch node" width="1080" height="1920" loading="lazy" decoding="async">
+      </div>
+      <div class="media-frame media-frame--portrait">
+        <img src="media/render-2.png" alt="Open EchoWatch chassis with ESP32" width="1080" height="1920" loading="lazy" decoding="async">
+      </div>
+      <div class="media-frame media-frame--portrait">
+        <img src="media/render-4.png" alt="EchoWatch battery and RF assembly" width="1080" height="1920" loading="lazy" decoding="async">
+      </div>
     </div>
   </div>
 </section>
@@ -76,6 +102,8 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script src="client-store.js"></script>
+<script src="auth-client.js"></script>
 
 </body>
 </html>
