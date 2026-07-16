@@ -144,4 +144,29 @@ document.addEventListener('DOMContentLoaded', () => {
       spikeEvery: parseFloat(c.dataset.spike || '0'),
     });
   });
+
+  // Product video: respect reduced motion; pause when off-screen
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('video.product-video').forEach((video) => {
+    if (reduceMotion) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      return;
+    }
+    if (!('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const p = video.play();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(video);
+  });
 });

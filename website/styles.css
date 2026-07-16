@@ -183,6 +183,155 @@ body.nav-open{overflow:hidden;}
 .stat .label{font-size:0.82rem; color:var(--ink-dim); margin-top:4px;}
 @media (max-width:720px){ .stat-strip{grid-template-columns:1fr;} }
 
+/* ---------- product media ---------- */
+.cv-auto{content-visibility:auto; contain-intrinsic-size:1px 900px;}
+.hero-product{padding-bottom:24px;}
+.hero-split{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+  gap:48px;
+  align-items:center;
+}
+.hero-copy h1{max-width:none;}
+.hero-media{display:flex; flex-direction:column; align-items:center; gap:12px;}
+@media (max-width:900px){
+  .hero-split{grid-template-columns:1fr; gap:32px;}
+  .hero-media{max-width:320px; margin:0 auto;}
+}
+
+.media-frame{
+  position:relative;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, var(--glow-ember), transparent 70%),
+    var(--bg-surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.media-frame--glow{
+  box-shadow:0 0 0 1px var(--border), 0 24px 80px var(--ember-glow);
+}
+.media-frame--portrait{aspect-ratio:9/16; width:100%; max-width:360px;}
+.media-frame--portrait.media-frame--lg{max-width:420px;}
+.media-frame--landscape{aspect-ratio:16/9; width:100%;}
+.media-frame--wide{
+  aspect-ratio:auto;
+  width:100%;
+  max-width:100%;
+  min-height:280px;
+  background:var(--bg-surface);
+}
+.media-frame--wide img{
+  width:100%;
+  max-height:min(72vh, 720px);
+  object-fit:contain;
+}
+.media-frame--label{
+  aspect-ratio:1;
+  max-width:280px;
+  width:100%;
+  background:#0a0a0a;
+}
+.media-frame img,
+.media-frame video{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.product-video{
+  background:#111;
+}
+.media-caption{
+  font-size:0.72rem;
+  color:var(--ink-dim);
+  letter-spacing:0.04em;
+  margin:0;
+  text-align:center;
+}
+
+.card-media{padding:16px 16px 22px; display:flex; flex-direction:column; gap:14px;}
+.card-media .media-frame{max-width:100%; margin:0 auto;}
+.card-media h3{margin:4px 4px 0;}
+.card-media p{margin:0 4px;}
+.feature-media-grid .media-frame--portrait{max-width:100%;}
+
+.detail-split{
+  display:grid;
+  grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);
+  gap:40px;
+  align-items:start;
+}
+@media (max-width:900px){
+  .detail-split{grid-template-columns:1fr;}
+  .detail-split .media-frame--portrait{max-width:340px; margin:0 auto;}
+}
+.detail-copy{display:flex; flex-direction:column; gap:28px;}
+.bom-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.bom-list li{
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:12px;
+  align-items:baseline;
+  color:var(--ink-dim);
+  font-size:0.95rem;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg-surface);
+}
+.bom-list .mono{color:var(--signal); font-size:0.8rem;}
+.label-shot{display:flex; flex-direction:column; gap:10px; align-items:flex-start;}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+@media (max-width:900px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .gallery-grid{grid-template-columns:1fr;} }
+.gallery-item{margin:0; display:flex; flex-direction:column; gap:8px;}
+.gallery-item figcaption{
+  font-size:0.72rem;
+  color:var(--ink-dim);
+  letter-spacing:0.04em;
+  padding:0 2px;
+}
+
+.cta-band{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  padding:28px 28px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:
+    radial-gradient(ellipse 60% 80% at 0% 50%, var(--glow-ember), transparent 55%),
+    var(--bg-surface);
+}
+
+/* technology hardware strip */
+.tech-media-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:28px;
+}
+@media (max-width:800px){ .tech-media-row{grid-template-columns:1fr;} }
+.tech-media-row .media-frame--portrait{max-width:100%;}
+
 /* ---------- cards / grid ---------- */
 .grid{display:grid; gap:20px;}
 .grid-3{grid-template-columns:repeat(3,1fr);}

@@ -6,7 +6,9 @@
 <title>Home · EchoWatch</title>
 <meta name="description" content="EchoWatch — acoustic predictive maintenance for cement plant equipment.">
 <link rel="stylesheet" href="styles.css">
-
+<!-- LCP: hero product media (full quality, early fetch) -->
+<link rel="preload" as="image" href="media/product-spin-poster.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="media/render-1.png" fetchpriority="high">
 </head>
 <body>
 <nav class="nav">
@@ -18,19 +20,37 @@
 </nav>
 <main>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Live &middot; Predictive maintenance for Dangote Cement</div>
-    <h1>Listening for failure<br>before it happens.</h1>
-    <p class="lede">EchoWatch listens to crushers, mills, and kilns continuously, and flags wear days before it becomes downtime &mdash; sensed on-device, logged over time, and routed straight to the person who can act on it.</p>
-    <div class="btnrow">
-      <a class="btn btn-primary" href="problem.html">See the problem</a>
-      <a class="btn btn-ghost" href="technology.html">How it works</a>
-      <a class="btn btn-ghost" href="dashboard.html">View live dashboard</a>
+<!-- 1 · HERO — spin video + closed unit -->
+<section class="hero hero-product">
+  <div class="wrap hero-split">
+    <div class="hero-copy">
+      <div class="eyebrow">Live &middot; Predictive maintenance for Dangote Cement</div>
+      <h1>Listening for failure<br>before it happens.</h1>
+      <p class="lede">EchoWatch is a sealed ESP32 edge node that listens to crushers, mills, and kilns, flags wear days before downtime, and routes the alert to the person who can act &mdash; with a local buzzer when the network is gone.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="problem.html">See the problem</a>
+        <a class="btn btn-ghost" href="technology.html">How it works</a>
+        <a class="btn btn-ghost" href="dashboard.html">View live dashboard</a>
+      </div>
     </div>
-  </div>
-  <div class="wrap" style="margin-top:56px;">
-    <canvas class="waveform-hero" data-wave data-color="#E8672E" data-amp="0.45" data-mode="live" data-spike="240"></canvas>
+    <div class="hero-media">
+      <div class="media-frame media-frame--portrait media-frame--glow">
+        <video
+          class="product-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="media/product-spin-poster.jpg"
+          width="1080"
+          height="1920"
+          aria-label="EchoWatch node rotating product render">
+          <source src="media/product-spin.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="media-caption mono">IP67 enclosure &middot; ESP32-S3 edge node</p>
+    </div>
   </div>
 </section>
 
@@ -44,18 +64,184 @@
   </div>
 </section>
 
-<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#4FB8AC" data-amp="0.4" ></canvas></div>
+<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#4FB8AC" data-amp="0.4"></canvas></div>
 
-<section>
+<!-- 2 · SENSE / DETECT / NOTIFY with product shots -->
+<section class="cv-auto">
   <div class="wrap">
     <div class="eyebrow">What it does</div>
-    <h2>Sense, detect, notify &mdash; one ESP32 node per machine.</h2>
-    <div class="grid grid-3" style="margin-top:36px;">
-      <div class="card"><h3>Sense</h3><p>An acoustic and vibration sensor on each machine listens continuously, on-device, without needing a constant connection to the cloud.</p></div>
-      <div class="card"><h3>Detect</h3><p>A lightweight autoencoder flags deviations from that specific machine's own normal &mdash; not a generic average across every machine on site.</p></div>
-      <div class="card"><h3>Notify</h3><p>A confirmed anomaly is logged, shown live on the dashboard, and routed to whoever is responsible for that machine.</p></div>
+    <h2>Sense, detect, notify &mdash; one node per machine.</h2>
+    <div class="grid grid-3 feature-media-grid" style="margin-top:36px;">
+      <article class="card card-media">
+        <div class="media-frame media-frame--portrait">
+          <img
+            src="media/render-1.png"
+            alt="EchoWatch sealed IP67 enclosure, closed"
+            width="1080"
+            height="1920"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high">
+        </div>
+        <h3>Sense</h3>
+        <p>Sealed on the machine housing. MEMS mic and accelerometer listen continuously on-device &mdash; no permanent cloud link required.</p>
+      </article>
+      <article class="card card-media">
+        <div class="media-frame media-frame--portrait">
+          <img
+            src="media/render-2.png"
+            alt="EchoWatch open enclosure showing ESP32 board, antenna, and sensors"
+            width="1080"
+            height="1920"
+            loading="lazy"
+            decoding="async">
+        </div>
+        <h3>Detect</h3>
+        <p>ESP32-S3 runs a lightweight autoencoder on that machine&rsquo;s own healthy baseline &mdash; reconstruction error becomes the AHI risk score.</p>
+      </article>
+      <article class="card card-media">
+        <div class="media-frame media-frame--portrait">
+          <img
+            src="media/render-4.png"
+            alt="EchoWatch internals with battery, antenna, and sensor wiring"
+            width="1080"
+            height="1920"
+            loading="lazy"
+            decoding="async">
+        </div>
+        <h3>Notify</h3>
+        <p>Confirmed anomalies hit the dashboard and the right lead. Network down? Local buzzer and GSM path still fire at the equipment.</p>
+      </article>
     </div>
     <div class="btnrow"><a class="btn btn-ghost" href="technology.html">Read the full pipeline &rarr;</a></div>
+  </div>
+</section>
+
+<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#E8672E" data-amp="0.35"></canvas></div>
+
+<!-- 3 · ANNOTATED BOM + LABEL -->
+<section class="cv-auto">
+  <div class="wrap">
+    <div class="eyebrow">Inside the box</div>
+    <h2>Every part has a job on the plant floor.</h2>
+    <div class="detail-split" style="margin-top:36px;">
+      <div class="media-frame media-frame--portrait media-frame--lg">
+        <img
+          src="media/render-3.png"
+          alt="Labeled EchoWatch hardware: ESP32-S3, I2S mic, accelerometer, SIM800L, CT clamp, IR temp, LiFePO4, buzzer, antenna"
+          width="1080"
+          height="1920"
+          loading="lazy"
+          decoding="async">
+      </div>
+      <div class="detail-copy">
+        <ul class="bom-list">
+          <li><span class="mono">01</span> ESP32-S3 &mdash; on-device TinyML inference</li>
+          <li><span class="mono">02</span> Digital I2S microphone &mdash; acoustic signature</li>
+          <li><span class="mono">03</span> MEMS accelerometer &mdash; vibration RMS</li>
+          <li><span class="mono">04</span> SIM800L GSM &mdash; SMS / GPRS fallback</li>
+          <li><span class="mono">05</span> SCT-013 CT clamp &mdash; motor current context</li>
+          <li><span class="mono">06</span> MLX90614 IR &mdash; thermal rate-of-change</li>
+          <li><span class="mono">07</span> LiFePO4 pack &mdash; ride through grid blips</li>
+          <li><span class="mono">08</span> Piezo buzzer &mdash; offline local alert</li>
+          <li><span class="mono">09</span> External antenna &mdash; dusty plant RF</li>
+        </ul>
+        <div class="label-shot">
+          <div class="media-frame media-frame--label">
+            <img
+              src="media/label.jpg"
+              alt="EchoWatch PCB silkscreen label — Predictive Maintenance Node, Node ID EW-01"
+              width="1989"
+              height="1920"
+              loading="lazy"
+              decoding="async">
+          </div>
+          <p class="media-caption mono">Board identity · EW-01</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-wrap wrap"><canvas class="waveform" data-wave data-color="#4FB8AC" data-amp="0.4"></canvas></div>
+
+<!-- 4 · WIDE PRODUCT SHOT -->
+<section class="cv-auto">
+  <div class="wrap">
+    <div class="eyebrow">Built for the line</div>
+    <h2>Compact enough for a housing. Tough enough for dust and heat.</h2>
+    <div class="media-frame media-frame--wide" style="margin-top:32px;">
+      <img
+        src="media/render-4-large.png"
+        alt="EchoWatch open chassis wide render with battery pack and RF antenna"
+        width="1080"
+        height="1920"
+        loading="lazy"
+        decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- 5 · SIX PERSPECTIVES -->
+<section class="cv-auto">
+  <div class="wrap">
+    <div class="eyebrow">Enclosure study</div>
+    <h2>Six views of the sealed node.</h2>
+    <p class="lede">Industrial form factor for mounting next to rotating equipment &mdash; not a lab breadboard.</p>
+    <div class="gallery-grid" style="margin-top:32px;">
+      <figure class="gallery-item">
+        <div class="media-frame media-frame--landscape">
+          <img src="media/perspective-1.png" alt="EchoWatch enclosure front three-quarter view" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono">Front · three-quarter</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="media-frame media-frame--landscape">
+          <img src="media/perspective-2.png" alt="EchoWatch enclosure rear three-quarter view" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono">Rear · three-quarter</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="media-frame media-frame--landscape">
+          <img src="media/perspective-3.png" alt="EchoWatch enclosure top-down view" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono">Top-down</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="media-frame media-frame--landscape">
+          <img src="media/perspective-4.png" alt="EchoWatch enclosure side elevation" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono">Side elevation</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="media-frame media-frame--landscape">
+          <img src="media/perspective-5.png" alt="EchoWatch enclosure isometric view" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono">Isometric</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="media-frame media-frame--landscape">
+          <img src="media/perspective-6.png" alt="EchoWatch enclosure opposite angle" width="1920" height="1080" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="mono">Opposite angle</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="cv-auto" style="padding-top:40px;">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <div class="eyebrow">Next</div>
+        <h2 style="margin-bottom:8px;">See the risk score on live plant tiles.</h2>
+        <p class="lede" style="margin-bottom:0;">Six machines, AHI thresholds, and the offline buzzer path &mdash; plant-scoped login.</p>
+      </div>
+      <div class="btnrow" style="margin-top:0;">
+        <a class="btn btn-primary" href="dashboard.html">Open dashboard</a>
+        <a class="btn btn-ghost" href="login.html">Plant login</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -73,6 +259,5 @@
 <script src="script.js"></script>
 <script src="client-store.js"></script>
 <script src="auth-client.js"></script>
-
 </body>
 </html>
