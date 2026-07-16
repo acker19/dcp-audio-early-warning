@@ -15,7 +15,15 @@ Acoustic / vibration predictive maintenance for Dangote Cement plants
 
 No React/Vue build step. Open the site through the Node server so `/api/*` works.
 
-## Quick start
+## Deploy (Netlify)
+
+`netlify.toml` publishes the **`website/`** folder as a pure static site.
+
+Login + dashboard run **entirely in the browser** (`client-store.js`): seeded plant accounts and a PRONOSTIA-style AHI simulator. No Node server required on Netlify.
+
+Set Netlify **publish directory** to `website` (or use the included `netlify.toml`).
+
+## Local (optional Node API)
 
 ```bash
 cd server
@@ -24,8 +32,7 @@ npm start
 ```
 
 - Site: http://localhost:3847  
-- Login: http://localhost:3847/login.html  
-- Dashboard (auth required): http://localhost:3847/dashboard.html  
+- Or open `website/login.html` directly — client store works without the server too.
 
 ### Plant logins
 
