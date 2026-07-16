@@ -20,10 +20,33 @@
   --alert-glow:rgba(214,69,69,0.30);
   --border:rgba(237,231,218,0.12);
   --border-strong:rgba(237,231,218,0.22);
+  --nav-bg:rgba(23,20,18,0.86);
+  --glow-ember:rgba(232,103,46,0.08);
+  --glow-signal:rgba(79,184,172,0.06);
   --font-display:'Space Grotesk',sans-serif;
   --font-body:'IBM Plex Sans',sans-serif;
   --font-mono:'IBM Plex Mono',monospace;
   --maxw:1120px;
+}
+
+:root[data-theme="light"]{
+  --bg-void:#f7efe4;
+  --bg-surface:#fffdf8;
+  --bg-surface-2:#f3e8d8;
+  --ink:#211a14;
+  --ink-dim:#6a5846;
+  --ember:#d95e1f;
+  --ember-dim:#b84e22;
+  --ember-glow:rgba(217,94,31,0.18);
+  --signal:#1e7b70;
+  --signal-glow:rgba(30,123,112,0.16);
+  --alert:#c83d3d;
+  --alert-glow:rgba(200,61,61,0.16);
+  --border:rgba(33,26,20,0.12);
+  --border-strong:rgba(33,26,20,0.2);
+  --nav-bg:rgba(247,239,228,0.86);
+  --glow-ember:rgba(217,94,31,0.10);
+  --glow-signal:rgba(30,123,112,0.08);
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -37,11 +60,12 @@ body{
   font-size:16px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  transition:background-color .2s ease, color .2s ease;
 }
 body{
   background-image:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(232,103,46,0.08), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(79,184,172,0.06), transparent 60%);
+    radial-gradient(ellipse 900px 500px at 15% -10%, var(--glow-ember), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, var(--glow-signal), transparent 60%);
   background-attachment:fixed;
 }
 img,canvas,svg{display:block;max-width:100%;}
@@ -76,7 +100,6 @@ section{padding:88px 0;}
 @media (max-width:720px){ section{padding:56px 0;} h1{font-size:2.2rem;} }
 @media (max-width:720px){
   table.cmp, table.log{ display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  table.cmp tr, table.log tr{ }
   table.cmp td, table.cmp th{ white-space:nowrap; }
 }
 
@@ -86,14 +109,14 @@ section{padding:88px 0;}
 /* ---------- nav ---------- */
 .nav{
   position:sticky; top:0; z-index:50;
-  background:rgba(23,20,18,0.86);
+  background:var(--nav-bg);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
 }
-.nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+.nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px;}
 .brand{font-family:var(--font-display); font-weight:700; font-size:1.15rem; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:8px; letter-spacing:-0.01em;}
 .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--ember-glow);}
-.navlinks{display:flex; gap:2px; list-style:none; margin:0; padding:0; align-items:center;}
+.navlinks{display:flex; gap:2px; list-style:none; margin:0; padding:0; align-items:center; margin-left:auto;}
 .navlinks a{
   text-decoration:none; color:var(--ink-dim); font-size:0.88rem; font-weight:500;
   padding:8px 14px; border-radius:6px; transition:color .15s ease;
@@ -103,6 +126,9 @@ section{padding:88px 0;}
 .navlinks a.active::after{content:'';position:absolute; left:14px; right:14px; bottom:2px; height:2px; background:var(--ember); border-radius:2px;}
 .navlinks .sep{width:1px; height:20px; background:var(--border-strong); margin:0 6px;}
 .navtoggle{display:none; background:none; border:1px solid var(--border-strong); color:var(--ink); width:38px; height:38px; border-radius:8px; cursor:pointer;}
+.theme-toggle{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--border-strong); border-radius:999px; background:var(--bg-surface); color:var(--ink); cursor:pointer; font-family:var(--font-body); font-size:0.84rem; font-weight:600; margin-left:8px;}
+.theme-toggle:hover{border-color:var(--signal); color:var(--signal);}
+.theme-toggle__icon{font-size:0.95rem; line-height:1;}
 @media (max-width:860px){
   .navlinks{
     position:fixed;
@@ -126,6 +152,7 @@ section{padding:88px 0;}
   .navlinks a{padding:14px 10px; font-size:1rem; border-bottom:1px solid var(--border);}
   .navlinks .sep{display:none;}
   .navtoggle{display:flex; align-items:center; justify-content:center; position:relative; z-index:61;}
+  .theme-toggle{margin-left:0; margin-top:4px;}
 }
 body.nav-open{overflow:hidden;}
 

@@ -2,6 +2,53 @@
 
 // mobile nav toggle
 document.addEventListener('DOMContentLoaded', () => {
+  const root = document.documentElement;
+  const storageKey = 'echowatch-theme';
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+  const navWrap = document.querySelector('.nav .wrap');
+
+  const applyTheme = (theme) => {
+    const isLight = theme === 'light';
+    root.setAttribute('data-theme', isLight ? 'light' : 'dark');
+    const toggle = document.querySelector('.theme-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(isLight));
+      toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      toggle.innerHTML = `<span class="theme-toggle__icon" aria-hidden="true">${isLight ? '☀︎' : '☾'}</span><span class="theme-toggle__label">${isLight ? 'Light mode' : 'Dark mode'}</span>`;
+    }
+  };
+
+  if (navWrap && !navWrap.querySelector('.theme-toggle')) {
+    const toggle = document.createElement('button');
+    toggle.className = 'theme-toggle';
+    toggle.type = 'button';
+    navWrap.appendChild(toggle);
+  }
+
+  const savedTheme = localStorage.getItem(storageKey);
+  const initialTheme = savedTheme || (prefersLight.matches ? 'light' : 'dark');
+  applyTheme(initialTheme);
+
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      localStorage.setItem(storageKey, nextTheme);
+      applyTheme(nextTheme);
+    });
+  }
+
+  const handleSystemTheme = (event) => {
+    if (!localStorage.getItem(storageKey)) {
+      applyTheme(event.matches ? 'light' : 'dark');
+    }
+  };
+  if (typeof prefersLight.addEventListener === 'function') {
+    prefersLight.addEventListener('change', handleSystemTheme);
+  } else if (typeof prefersLight.addListener === 'function') {
+    prefersLight.addListener(handleSystemTheme);
+  }
+
   const btn = document.querySelector('.navtoggle');
   const links = document.querySelector('.navlinks');
   if (btn && links) {
